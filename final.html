@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Switcher</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            flex-direction: column;
+            background-size: cover; /* Ensures background covers the screen */
+            background-position: center; /* Keeps the background centered */
+            transition: background-image 1s ease-in-out; /* Smooth transition for background change */
+        }
+
+        /* Container styles */
+        .container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            max-width: 90%; /* Allow container to scale down on smaller screens */
+            width: 400px; /* Set a max width to prevent it from being too large */
+        }
+
+        /* Heading styled as a button */
+        h1 {
+            font-size: 2rem; /* Use relative size for better responsiveness */
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            cursor: pointer; /* Show pointer cursor on hover */
+            padding: 10px 20px; /* Add padding to make it look like a button */
+            background-color: transparent; /* Transparent background */
+            border: 2px solid white; /* White border */
+            border-radius: 5px;
+            display: inline-block; /* Make the h1 element behave like an inline element */
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+        }
+
+        /* Heading hover effect */
+        h1:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Light transparent background on hover */
+            color: #4CAF50; /* Green color on hover */
+            border-color: #4CAF50; /* Green border on hover */
+        }
+
+        /* Media Query for small screens (mobile devices) */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem; /* Smaller heading font size for mobile */
+            }
+
+            .container {
+                width: 90%; /* Make the container width responsive */
+                padding: 15px; /* Reduce padding on smaller screens */
+            }
+        }
+
+        /* Media Query for very small screens */
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.2rem; /* Even smaller font size for very small screens */
+                padding: 8px 15px; /* Reduce padding for mobile */
+            }
+
+            .container {
+                width: 90%; /* Container takes more of the screen width */
+                padding: 10px; /* Less padding for smaller screens */
+            }
+        }
+
+        /* Landscape orientation adjustments */
+        @media (orientation: landscape) {
+            .container {
+                width: 80%; /* Reduce container width for landscape mode */
+            }
+
+            h1 {
+                font-size: 1.8rem; /* Adjust font size for landscape */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Container to hold the heading and button -->
+<div class="container">
+    <!-- Heading, which now acts as a button -->
+    <h1 id="heading">LIVE LIFE...</h1>
+</div>
+
+<script>
+    // Get the h1 element
+    const heading = document.getElementById('heading');
+    
+    // Initial state: First background image and text
+    let isFirstImage = true;
+
+    // Set the initial background image to "bb.gif" when the page loads
+    document.body.style.backgroundImage = "url('bb.gif')";
+    
+    // Heading click event listener (acting as a button)
+    heading.addEventListener('click', () => {
+        if (isFirstImage) {
+            // Switch to the second image (aa.gif)
+            document.body.style.backgroundImage = "url('aa.gif')";
+            heading.textContent = "TO THE FULLEST"; // Change heading text
+            isFirstImage = false; // Update state
+        } else {
+            // Switch back to the first image (bb.gif)
+            document.body.style.backgroundImage = "url('bb.gif')";
+            heading.textContent = "LIVE LIFE..."; // Reset heading text
+            isFirstImage = true; // Update state
+        }
+    });
+</script>
+
+</body>
+</html>
